@@ -60,7 +60,7 @@
 
       - name: Clone git repo to undercloud
         git:
-          repo: "https://github.com/sashkavyshka/gnocchi_auto.git"
+          repo: "https://github.com/nataf37/gnocchi_auto.git"
           dest: "~/gnocchi_auto"
 
       - name: Python tests {{ cases }}
@@ -89,7 +89,3 @@
           src: "{{ output_file }}"
           dest: ../{{ output_file }}
           flat: yes
-
-
-
-
