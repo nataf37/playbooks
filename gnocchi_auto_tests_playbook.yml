@@ -67,7 +67,7 @@
         shell: |
           source ~/overcloudrc > /dev/null
           python2 ~/gnocchi_auto/RHELOSP_{{ item }}.py > RHELOSP-{{ item }}.log
-          if [ $? -eq 0]; then echo RHELOSP-{{ item }}=passed; else  echo RHELOSP-{{ item }}=failed;fi
+          if [ $? -eq 0]; then echo RHELOSP-{{ item }}=passed >> {{ output_file }}; else  echo RHELOSP-{{ item }}=failed >> {{ output_file }};fi
         register: command_result
         with_items: "{{ cases }}"
         ignore_errors: true
