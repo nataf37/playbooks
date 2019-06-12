@@ -1,7 +1,7 @@
 #!/usr/bin/env ansible-playbook
 ---
 - name: Undercloud part of gnocchi testing
-  hosts: undercloud-0
+  hosts: localhost 
   gather_facts: false
   vars:
     output_file: test_run_result.out
@@ -67,7 +67,7 @@
         shell: |
           source ~/overcloudrc > /dev/null
           python2 ~/gnocchi_auto/RHELOSP_{{ item }}.py > RHELOSP-{{ item }}.log
-          if [ $? -eq 0]; then echo RHELOSP-{{ item }}=passed >> {{ output_file }}; else  echo RHELOSP-{{ item }}=failed >> {{ output_file }};fi
+          if [ $? -eq 0 ]; then echo RHELOSP-{{ item }}=passed >> {{ output_file }}; else  echo RHELOSP-{{ item }}=failed >> {{ output_file }};fi
         register: command_result
         with_items: "{{ cases }}"
         ignore_errors: true
@@ -85,8 +85,8 @@
           line: ''
           state: absent
 
-      - name: Copy to localhost
-        fetch:
-          src: "{{ output_file }}"
-          dest: ../{{ output_file }}
-          flat: yes
+#      - name: Copy to localhost
+#        fetch:
+#          src: "{{ output_file }}"
+#          dest: ../{{ output_file }}
+#          flat: yes
