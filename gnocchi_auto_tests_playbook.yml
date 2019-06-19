@@ -62,6 +62,7 @@
         git:
           repo: "https://github.com/nataf37/gnocchi_auto.git"
           dest: "~/gnocchi_auto"
+          version: OSP15
 
       - name: Python tests {{ cases }}
         shell: |
