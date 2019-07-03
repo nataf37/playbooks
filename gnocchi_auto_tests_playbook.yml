@@ -1,7 +1,7 @@
 #!/usr/bin/env ansible-playbook
 ---
 - name: Undercloud part of gnocchi testing
-  hosts: localhost 
+  hosts: undercloud-0
   gather_facts: false
   vars:
     output_file: test_run_result.out
@@ -86,8 +86,8 @@
           line: ''
           state: absent
 
-#      - name: Copy to localhost
-#        fetch:
-#          src: "{{ output_file }}"
-#          dest: ../{{ output_file }}
-#          flat: yes
+     - name: Copy to localhost
+       fetch:
+         src: "{{ output_file }}"
+         dest: ../{{ output_file }}
+         flat: yes
